@@ -1,0 +1,25 @@
+##################################################
+## application.yml ##
+#####################
+
+#port
+server:  port: 10000
+  servlet:    context-path: /solo
+
+#datasource
+spring:  datasource:    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: solo
+    password: solo
+    driver-class-name: oracle.jdbc.OracleDriver
+  mvc:    view:      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+    
+#logging
+logging:  level:    '[com.exam.solo]':  debug
+    
+#mybatis
+mybatis:  mapper-locations:  - classpath*:/mapper/**/*.xml
+  type-aliases-package: com.exam.solo
+  configuration:    map-underscore-to-camel-case: true
+    jdbc-type-for-null: NULL

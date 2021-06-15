@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>  
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,12 @@
 	<div class="container" id="header-container">
 		<div class="row">
 			<div class="col" style="background-color: black;">
-				<button type="button" class="btn btn-sm btn-light">로그인</button>
+				<sec:authorize access="isAnonymous()">
+					<button type="button" class="btn btn-sm btn-light">로그인</button>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<button type="button" class="btn btn-sm btn-light">로그아웃</button>
+				</sec:authorize>
 				<button type="button" class="btn btn-sm btn-light" onclick="goJoinForm()">회원가입</button>
 			</div>
 		</div>
